@@ -1,0 +1,182 @@
+
+
+
+/*************************************
+* Header
+*   Contains rules for the header with
+*   logo and navigation bar.
+*************************************/
+
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000
+}
+
+.navbar-item {
+    float: left;
+}
+
+.navbar-item .navbar-link {
+    display: block;
+    color: #FFF;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar-item .navbar-link:hover {
+    background-color: #3700B3;
+}
+
+.active {
+    background-color: #6200EE;
+    text-decoration: underline;
+    text-decoration-color: #FFF;
+}
+
+/*************************************
+* Body
+*   Contains rules for the body which
+*   is applicable for all pages.
+*************************************/
+
+body {
+    background-color: #3C3C3C;
+}
+
+h1 {
+    color: #FFF;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: xx-large;
+    padding-top: 10%;
+    /*padding-bottom: 10%;*/
+}
+
+h2 {
+    text-decoration: underline;
+    color: #FFF;
+    text-align: left;
+    text-transform: uppercase;
+    font-size: x-large;
+    padding-top: 5%;
+    padding-bottom: 2%;
+    /*padding-bottom: 10%;*/
+}
+
+.textbody {
+    background: #3C3C3C;
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+p {
+    font: times;
+    color: #FFF;
+}
+
+/*************************************
+* Recipe instructions
+*   Contains rules for the layout of 
+*   the recipe image, ingredients list
+*   and instructions list
+*************************************/
+
+.recipe-image {
+    width: 100%;
+}
+
+.ingredients-list > ul {
+    list-style-type: circle;
+    text-align: left;
+    color: #FFF;
+    margin-left: 2%;
+}
+
+.ingredients-list > ul > li {
+    padding-top: 2%;
+}
+
+.ingredients-list {
+    /*padding-top: 10px;*/
+}
+
+.instructions-list > ul{
+    list-style-type: decimal;
+    text-align: left;
+    color: #FFF;
+    margin-left: 2%;
+}
+
+.instructions-list > ul > li {
+    padding-top: 2%;
+}
+
+.comment {
+    padding-bottom: 2%
+}
+
+.comments > ul{
+    text-align: left;
+    color: #FFF;
+}
+
+/*************************************
+* Calendar
+*   Contains rules for the calendar 
+*************************************/
+.schedule {
+    background: #3C3C3C;
+    position: relative;
+    padding-top: 10px;
+}
+
+.schedule-headings {
+    font-size: x-large;
+    color: #fff;
+    height: 50px;
+}
+
+.schedule-headings > div {
+    float: left;
+    width: 14%;
+    height: 50px;
+    text-align: center;
+}
+
+.divTableCell {
+    float: left;
+    height: 100px;
+    width: 14%;
+    border-style: 1px solid black;
+    list-style: none;
+    text-align: left;
+    color: #FFF;
+}
+
+.pancake-cell {
+    background: transparent url(../images/pancakes.jpg) no-repeat center center;
+    background-size: fill;
+}
+
+.meatball-cell {
+    background: transparent url(../images/meatballs.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+.next-month {
+    font-style: italic;
+}
+
+/*************************************
+* Footer
+*   Contains rules for the footer with
+*   informational links.
+*************************************/
+
+
