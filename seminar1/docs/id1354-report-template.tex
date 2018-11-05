@@ -9,78 +9,175 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
+\usepackage[autostyle]{csquotes}
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sortlocale=de_DE,
+    natbib=true,
+    url=true,
+    doi=true,
+    eprint=false
+]{biblatex}
+\addbibresource{id1354-report-template.bib}
+
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+
 % Create header and footer
 \headheight 27pt
 \pagestyle{fancyplain}
 \lhead{\footnotesize{Internet Applications, ID1354}}
-\chead{\footnotesize{Name of the Report}}
+\chead{\footnotesize{Jacobs tasty website!}}
 \rhead{}
 \lfoot{}
 \cfoot{\thepage\ (\pageref{LastPage})}
 \rfoot{}
 
 % Create title page
-\title{Name of the Report}
+\title{Jacobs tasty website!}
 \subtitle{Internet Applications, ID1354}
-\author{Your Name and Email Address}
-\date{Date}
+\author{Jacob Kimblad jacobki@kth.se}
+\date{2018-11-05}
 
 \begin{document}
 
 \maketitle
 
-\section*{Tips for Report Writing}
-\textbf{REMOVE THIS SECTION BEFORE SUBMITTING THE REPORT.}\\
+%\section*{Tips for Report Writing}
+%\textbf{REMOVE THIS SECTION BEFORE SUBMITTING THE REPORT.}\\
 
-\noindent \textit{The target audience has exactly the same skills as the author, except they do not know anything at all about the specific program described in the report.} \\
+%\noindent \textit{The target audience has exactly the same skills as the author, except they do not know anything at all about the specific program described in the report.} \\
 
-Consider the following:
+%Consider the following:
 
-\begin{itemize}
-  \item \textbf{The report must be \textit{centered around the requirements}. Which are they (Introduction), how did you work to meet them (Method), what is the solution that meets them (Result), and how can you be sure they are met (Discussion). This is the IMRaD method.}
+%\begin{itemize}
+%\item \textbf{The report must be \textit{centered around the requirements}. Which are they (Introduction), how did you work to meet them (Method), what is the solution that meets them (Result), and how can you be sure they are met (Discussion). This is the IMRaD method.}
 
-  \item \textbf{The report must show that you have done the work yourself and that you have understood what you have done. Both of these goals are met by carefully explaining the source code.}
+%\item \textbf{The report must show that you have done the work yourself and that you have understood what you have done. Both of these goals are met by carefully explaining the source code.}
 
-  \item Is spelling and grammar correct? Is spoken language avoided?
+%\item Is spelling and grammar correct? Is spoken language avoided?
 
-  \item Does the report have a good structure with sections, subsections and paragraphs?
+%\item Does the report have a good structure with sections, subsections and paragraphs?
 
-  \item Is the solution clearly explained? Will the reader understand the program? What would you yourself want to know if you read about the program, is that included in the report?
+%\item Is the solution clearly explained? Will the reader understand the program? What would you yourself want to know if you read about the program, is that included in the report?
 
-  \item Is the solution analyzed and evaluated? Are important properties of the program explained? Should there have been more extensive evaluation?
+%\item Is the solution analyzed and evaluated? Are important properties of the program explained? Should there have been more extensive evaluation?
 
-  \item Is the text clarified with images and/or other figures, and with links to the code in your Git repository? Remember that all figures (images, tables, graphs, code listings, etc) shall be numbered and have a short explaining text.
-\end{itemize}
+%\item Is the text clarified with images and/or other figures, and with links to the code in your Git repository? Remember that all figures (images, tables, graphs, code listings, etc) shall be numbered and have a short explaining text.
+%\end{itemize}
 
 \section{Introduction}
+The first requirement for the tasty recipes web site is that it should constist of four different pages. An index page, a calendar page, a meatballs recipe page and a pancakes recipe page. The second requirement is that from each of the four web pages you should be able to navigate to any of the other three web pages directly. The third requirement is that they should all have a similar layout which should be put into consideration when choosing fonts, colors, mouse hoovering, and link behaviour. In addition to all of the pages having similar layout some of their properites may not be assigned their default values. These properites are page layout, font family, font size, font style, foreground and background color, mouse hovering and link behavior. Beneath follows the requirements for each of the four individual pages.
 
-\textbf{This section tells \textit{what} are you going to do.} \\
+\subsection{Index page}
+The index page should be informative and welcoming by promoting the calendar page and providing a link to it in text-format.
 
-\noindent Explain the task and the requirements on the solution. It is very important to \textit{clearly state the requirements}. If you wrote the program together with other students, list their names and email addresses here.
+\subsection{Recipe pages}
+There should be an individual page for each of the two recipes (pancakes and meatballs). The recipe page should contain a picture of the prepared dish, its ingredients, instructions for preparing, its name and hard coded user comments.
+
+\subsection{Calendar page}
+The calendar page should, as the name suggests, present the user with a calendar of the month. Two days in the calendar should each contain a unique picture of the recipes (meatballs and pancakes). These should be clickable links that redirects the user to their respective recipe page.
+
+\subsection{Tasks}
+The tasks to be followed which should meet the requirements begin with creating HTML and CSS files to implement each of the different pages of the tasty recipes web site. It is necessary that all of the HTML and CSS files pass the W3C validation. It is also necessary to use a reset style sheet. When designing the website it is necessary to follow five of the ten heuristics for user interface design which were discussed during a lecture. All of the pages must also have identical behavior in the following four browsers: Chrome, Explorer (or Edge), Firefox and Safari.
+
+
+\subsection{Summary}
+The following bulle list summarises the requirements and functionality of the complete web page.
+\begin{itemize}
+
+    \item Design and functionality:
+        \begin{enumerate}
+            \item Contain index, calendar and recipe pages.
+            \item Navigate to any page directly from any other page.
+            \item Pages should use similar layout.
+            \item Properties that must not have default values.
+        \end{enumerate}
+
+    \item Index page:
+        \begin{enumerate}
+            \item Informing and welcoming.
+            \item Contains a link to the calendar page.
+        \end{enumerate}
+
+    \item Recipe pages:
+        \begin{enumerate}
+            \item One page for each recipe.
+            \item Contain the name of the dish.
+            \item Contain a picture of the prepared dish.
+            \item Contain a list of required ingredients.
+            \item Contain steps of how to prepare the dish.
+            \item Contain comments from users about the dish. 
+        \end{enumerate}
+
+    \item Calendar page:
+        \begin{enumerate}
+            \item Present a calendar of one month.
+            \item Present a picture of each recipe in two unique days.
+            \item Make the pictures of the recipes clickable links to their respective page.
+        \end{enumerate}
+
+    \item Tasks:
+        \begin{enumerate}
+            \item Implement the described pages using CSS and HTML.
+            \item All CSS and HTML files should pass W3C validations.
+            \item Use a CSS reset sheet.
+            \item Follow the five given heuristics for user interface design.
+            \item All pages must have identical behaviour in the four common browsers.
+        \end{enumerate}
+
+\end{itemize}
+
+%\textbf{This section tells \textit{what} are you going to do.} \\
+
+%\noindent Explain the task and the requirements on the solution. It is very important to \textit{clearly state the requirements}. If you wrote the program together with other students, list their names and email addresses here.
 
 \section{Literature Study}
+For basic CSS and HTML syntax and tutorials reference \citet{noauthor_w3schools_nodate} provides good overview of possible syntax for both languages. It also provides easy to understand examples and the limits and possibilities of different tags in HTML and selectors, properties and values in CSS. It also provides templates for websites using HTML and CSS which is a great resource to gather inspiration and examples of actual websites.
 
-This section must prove that you collected sufficient knowledge before starting development, instead of just hacking away without knowing how to complete the task. State what you have read and briefly summarize what you have learned.
+It is predicted that the hardest part to complete will be to get the formating right for the calendar using HTML and CSS. The stackoverflow post shown in \citet{noauthor_html_nodate-1} explains how the HTML table tag should not be used to format layout of the page. It should only be used for data that is very tabular in nature. When looking at the reference document for the table tag \citet{noauthor_html_nodate} we see that a lot of table attributes have been deprecated in HTML5. Reference \citet{noauthor_using_nodate} explains how using tables for layout is now offcially wrong and instead div elements should be used. To help with constructing a layout for the calendar a div table generator such as \citet{noauthor_div_nodate} can be used.
+
+
+%This section must prove that you collected sufficient knowledge before starting development, instead of just hacking away without knowing how to complete the task. State what you have read and briefly summarize what you have learned.
 
 \section{Method}
 
-\textbf{This section tells \textit{how} you solved the task.} \\
+To solve the tasks a set of development tools are selected either becuase the authors familiarity with them or because of their simplicity to use, both of which helps to speed up development time. The text editor used to edit the HTML and CSS files is Vim, described as "Vim is a highly configurable text editor for efficiently creating and changing any kind of text" \citet{noauthor_welcome_nodate}. The web server used is the http-server \citet{noauthor_http-server_nodate} acquired under the NodeJS infrastructure. The shell used to run both Vim and the http-server is Zsh \citet{noauthor_zsh_nodate} under a GNU/Linux operating system distribution known as Manjaro \citet{noauthor_manjaro_nodate}. For source control Git was used with Github hosting a remote repository, this made it such that the validation tools, described in the next paragraph, could be used by just provdiging them with the URL's to the raw files hosted on Github.
 
-\noindent Explain how you worked when solving the tasks and how you evaluated that your solution met the requirements. Mention development tools and IDEs you used. \textit{Do not explain your solution and do not refer to code}, that belongs to the \textit{Result} section.
+Testing tools are also used to check some of the requirements of the web site are met. To make sure that the HTML files passes a W3C validation the online testing tool found in \citet{noauthor_w3c_nodate} is used. A similar testing tool is also used for the CSS files such that they also pass a W3C validation, this testing tool can be found at \citet{noauthor_w3c_nodate-1}.
+
+To help with debugging the code the web browser Firefox is used as it also includes a very handy set of tools, known as the Firefox Developer Tools \citet{noauthor_firefox_nodate}, that can be used to change the source code and see the effects in real time all within the browser. This helps with speeding up development time, as there is no need to navigate around different tools to make and the see the effects of a simple change. It is also necessary to test the finalised code such that it gives the exact desired behaviour in all of the different browsers defined by the requirements. To do this another online tool found at \citet{online browser tester} was used.
+
+%\textbf{This section tells \textit{how} you solved the task.} \\
+
+%\noindent Explain how you worked when solving the tasks and how you evaluated that your solution met the requirements. Mention development tools and IDEs you used. \textit{Do not explain your solution and do not refer to code}, that belongs to the \textit{Result} section.
 
 \section{Result}
 
-\textbf{This section explains \textit{the result} of what you did.} \\
-
-\noindent Present the solution. Explain your code and prove that it meets the requirements. It is very important to \textit{state each requirement that is met} and explain \textit{how you met it}. It is also important to include links to your code in your Git repository, user interface screen-shots, see Figure \ref{fig:ui}, and other figures to illustrate your reasoning. Also remember that these figures must be referenced in the text.
+To make sure that every other page can be reached from any of the four pages a navigation bar at the top of each page is used. This navigation bar has the same look and layout for all four pages to fulfill the requirement of similar layout on all the pages and can be seen in figure \ref{fig:navbar}.
 
 \begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=0.3]{ui.jpg}
-    \caption{A sample user interface screenshot to illustrate caption (this text), numbering and reference in text.}
-    \label{fig:ui}
-  \end{center}
+    \begin{center}
+        \includegraphics[scale=0.3]{images/navbar.png}
+        \caption{A sample user interface screenshot to illustrate the navigation bar at the top of each page.}
+        \label{fig:navbar}
+    \end{center}
 \end{figure}
+
+\textbf{This section explains \textit{the result} of what you did.} \\
+
+\noindent Present the solution. Explain your code and prove that it meets the requirements. It is very important to \textit{state each requirement that is met} and explain \textit{how you met it}. It is also important to include links to your code in your Git repository, user interface screen-shots, see Figure \citet{fig:ui}, and other figures to illustrate your reasoning. Also remember that these figures must be referenced in the text.
+
+%\begin{figure}[h!]
+    %\begin{center}
+        %\includegraphics[scale=0.3]{ui.jpg}
+        %\caption{A sample user interface screenshot to illustrate caption (this text), numbering and reference in text.}
+        %\label{fig:ui}
+    %\end{center}
+%\end{figure}
 
 \section{Discussion}
 
@@ -91,5 +188,7 @@ This section must prove that you collected sufficient knowledge before starting 
 \section{Comments About the Course}
 
 Any comment(s) related to this course offering or to coming offerings is much appreciated. \textit{Please also tell approximately how much time you spent on the assignment}, including lectures and exercises. This is of great help for course evaluation.
+
+\printbibliography
 
 \end{document}
