@@ -8,6 +8,7 @@
 \usepackage{fancyvrb}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage{dingbat}
 
 \usepackage[autostyle]{csquotes}
 \usepackage[
@@ -161,33 +162,136 @@ To make sure that every other page can be reached from any of the four pages a n
 
 \begin{figure}[h!]
     \begin{center}
-        \includegraphics[scale=0.3]{images/navbar.png}
+        \includegraphics[scale=0.5]{images/navbar.png}
         \caption{A sample user interface screenshot to illustrate the navigation bar at the top of each page.}
         \label{fig:navbar}
     \end{center}
 \end{figure}
 
-\textbf{This section explains \textit{the result} of what you did.} \\
+To get the same behaviour from all different browsers a reset style sheet was used which can be found in \citet{kimblad_git_2018}. This was referenced from every single html file as to correctly reset the wanted css properties, the references can be seen at \citet{kimblad_git_2018-reset}.
 
-\noindent Present the solution. Explain your code and prove that it meets the requirements. It is very important to \textit{state each requirement that is met} and explain \textit{how you met it}. It is also important to include links to your code in your Git repository, user interface screen-shots, see Figure \citet{fig:ui}, and other figures to illustrate your reasoning. Also remember that these figures must be referenced in the text.
+To make sure all pages have a similar layout a single custom stylesheet were used for all four of the pages which defines some custom properties of the page such as the fonts used, font sizes, font colors for headings \citet{kimblad_git_2018-h1}\citet{kimblad_git_2018-h2} and paragraphs \citet{kimblad_git_2018-paragraph}. It also changes the default values for the foreground, background\citet{kimblad_git_2018-background} and mouse hovering (seen in figure \ref{fig:navbar}). The appropriate HTML tags and classes where then apointed to the desired sections to apply their respective layout.
 
-%\begin{figure}[h!]
-    %\begin{center}
-        %\includegraphics[scale=0.3]{ui.jpg}
-        %\caption{A sample user interface screenshot to illustrate caption (this text), numbering and reference in text.}
-        %\label{fig:ui}
-    %\end{center}
-%\end{figure}
+Figure \ref{fig:index} shows a screenshot of the index page, which is the first page that is loaded when visiting the website. This page is both informative and welcoming while also providing a link to the calendar page in the text. For the recipe page the pancake is shown as an example. Figure \ref{fig:pancakes-picture} shows the top of the pancake recipe page which includes the title of the dish as well as the picture of the prepared dish. Scrolling further down the page reveals the ingredients, instructions and comment section which are shown in figure \ref{fig:pancake-text}. The final page is the calendar page which is displayed in figure \ref{fig:calendar}. As per the requirements its shows the days for a complete month as well as the pictures of the two dishes in seperate days. The pictures are also clickable links which was done by enclosing the whole div tag in an a tag.
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/index.png}
+        \caption{A sample user interface screenshot to illustrate the index page being welcoming and containing a link to the calendar page.}
+        \label{fig:index}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/pancakes-picture.png}
+        \caption{A sample user interface screenshot to illustrate the top of the pancake recipe page.}
+        \label{fig:pancakes-picture}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/pancake-text.png}
+        \caption{A sample user interface screenshot to illustrate the bottom of the pancake recipe page.}
+        \label{fig:pancake-text}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/calendar.png}
+        \caption{A sample user interface screenshot to illustrate the calendar page.}
+        \label{fig:calendar}
+    \end{center}
+\end{figure}
+
+To validate the HTML and CSS files the W3 validators \citet{noauthor_w3c_nodate} and \citet{noauthor_w3c_nodate-1} were used. The results are shown in figures \ref{fig:index-validated}-\ref{fig:mystyles-validated}.
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/index-validated.png}
+        \caption{A screenshot showing the index page passing validation.}
+        \label{fig:index-validated}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/meatballs-validated.png}
+        \caption{A screenshot showing the meatballs page passing validation.}
+        \label{fig:meatballs-validated}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/pancakes-validated.png}
+        \caption{A screenshot showing the pancakes page passing validation.}
+        \label{fig:pancakes-validated}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/calendar-validated.png}
+        \caption{A screenshot showing the calendar page passing validation.}
+        \label{fig:calendar-validated}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/reset-validated.png}
+        \caption{A screenshot showing the reset CSS passing validation.}
+        \label{fig:reset-validated}
+    \end{center}
+\end{figure}
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/mystyles-validated.png}
+        \caption{A screenshot showing the mystyles CSS passing validation.}
+        \label{fig:mystyles-validated}
+    \end{center}
+\end{figure}
+
+The first heuristic which concerns the visibility of the system status has been taken into consideration when designing the navigation bar. To infor the user about what is going on the current page that is being visited is being colored in a different color in the navigation bar. In addition it is also underlined. This can be seen in figure \ref{fig:navbar}. The second heuristics is taken into consideration when chosing names for the different pages in the navbar. Names that can easily be understood by the user by not being technical have been chosen which also can be seen in figure \ref{fig:navbar}. In addition, the ingredients for the recipes are presented in a bullet list, and the instructions are presented in a numbered bullet list. Both of these should be very intuitive to the user and require no further explaining. These can be seen in figure \ref{fig:pancake-text}. The consitency and standards heuristic has been put into consideration when navigating between different pages. Instead of learning new ways of navigation a very common navigation bar has been put at the top of the page easily available for the user. When designing the navbar the sixth heuristics has been taken into consideration such that the user can easily recognise how the navbar is used rather than try to recall some complicated instructions from memory. This is done by highlighting the current page and also highlighting when the mouse hovers over a different page as to show that the user is about to commit to a page switch if they press that specific button. The minimalistic and aesthetic design has been put into consideration when choosing the colors for the page and when displaying information. To no reinvent the wheel, aesthetic colors have been chosen from the Material Design framework \citet{noauthor_design_nodate}. A minimalistic design has been presented by not overwhelming the user with information. A single navbar is used to navigate the entirity of the website and all the necessary information is gathered under a single page instead of splitting it up into several. The flow of the individual pages follow a very intuitive pattern.
+
+As the tools suggested for testing the website in different browser (browshershots.org and turbo.net) doesnt allow for testing of local versions of websites (not even using localhost), the author was unable to test the website for other browsers than chrome and firefox, being that these two are the only ones who run natively on GNU/Linux. However, figure \ref{fig:chrome} shows the calendar page running in chrome. The calendar page was chosen as demonstration as it contains much the same formatting as the other pages and more. We can see from the screenshot that the webpage is displayed precisely the same way as the previous screenshot which was taken in firefox making it such that the requirement is met.
+
+\begin{figure}[h!]
+    \begin{center}
+        \includegraphics[scale=0.2]{images/chrome.png}
+        \caption{A sample user interface screenshot to illustrate the calendar page running in chrome.}
+        \label{fig:chrome}
+    \end{center}
+\end{figure}
 
 \section{Discussion}
 
-\textbf{This section \textit{analysis} the result presented in the previous section.} \\
+Here follows a summary of all of the requirements formated as a bullet list and a check next to each requirement that has been shown to be met earlier in the report.
+\begin{itemize}
+    \item Design and functionality. \checkmark
+    \item Index page. \checkmark
+    \item Recipe pages. \checkmark
+    \item Calendar page. \checkmark
+    \item Tasks. \checkmark
+    \begin {itemize}
+        \item Pass W3 validations. \checkmark
+        \item Use a reset sheet. \checkmark
+        \item Use interface design heuristics. \checkmark
+        \item Identical behaviour in different browsers. \checkmark
+    \end{itemize}
 
+\end{itemize}
+
+The most valuable lesson has been how to use CSS to format HTML divs into a grid network of desired look. This is valuable as the knowledge can be extended to format whole webpages using divs and not just something as specific as calenders. The problem that took the longest was getting borders around the individual dates in the calendar. A problem that was shown to be caused by faulty property
 \noindent Summarize the requirements and \textit{clearly state which of them you have met}. What lessons have you learned and what problems did you face? How were the problems solved? Should you have done something differently?
 
 \section{Comments About the Course}
 
-Any comment(s) related to this course offering or to coming offerings is much appreciated. \textit{Please also tell approximately how much time you spent on the assignment}, including lectures and exercises. This is of great help for course evaluation.
+The author has probably spent around 20 hours on this assignment. Worth noting is that the author did not attend any of the first three lectures. Other thoughts is that the assignment is a very good challenge to get started and understand the interplay between HTML and CSS and makes the student look forward to the next assignment. Unfortunately the student came into the course late, which also was the reason for missing the first three lectures. The student thinks it would be interesting to see how the assignment would play out after attending the lectures as less time would probably have to be spen on getting started with the essentials.
 
 \printbibliography
 
