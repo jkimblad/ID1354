@@ -1,0 +1,172 @@
+/*************************************
+* Header
+*   Contains rules for the header with
+*   logo and navigation bar.
+*************************************/
+
+
+.navbar {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #000000
+}
+
+.navbar-item {
+    float: left;
+    font-family: "Helvetica Neue", Helvetica;
+    font-size: 25px;
+}
+
+.navbar-item .navbar-link {
+    display: block;
+    color: #F9F9F9;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+.navbar-item .navbar-link:hover {
+    background-color: #3700B3;
+}
+
+.active {
+    background-color: #6200EE;
+    text-decoration: underline;
+    text-decoration-color: #F9F9F9;
+}
+
+/*************************************
+* Body
+*   Contains rules for the body which
+*   is applicable for all pages.
+*************************************/
+
+body {
+    background-color: #3C3C3C;
+}
+
+h1 {
+    color: #F9F9F9;
+    text-align: center;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica;
+    font-size: xx-large;
+    padding-top: 10%;
+}
+
+h2 {
+    text-decoration: underline;
+    color: #F9F9F9;
+    text-align: left;
+    text-transform: uppercase;
+    font-family: "Helvetica Neue", Helvetica;
+    font-size: x-large;
+    padding-top: 5%;
+    padding-bottom: 2%;
+}
+
+.textbody {
+    background: #3C3C3C;
+    text-align: center;
+    padding-left: 25%;
+    padding-right: 25%;
+}
+
+p {
+    font-family: "Helvetica Neue", Helvetica;
+    font-size: 20px;
+    color: #F9F9F9;
+}
+
+/*************************************
+* Recipe instructions
+*   Contains rules for the layout of 
+*   the recipe image, ingredients list
+*   and instructions list
+*************************************/
+
+.recipe-image {
+    width: 100%;
+}
+
+.ingredients-list > ul {
+    list-style-type: circle;
+    text-align: left;
+    color: #F9F9F9;
+    margin-left: 2%;
+}
+
+.ingredients-list > ul > li {
+    padding-top: 2%;
+}
+
+.instructions-list > ul{
+    list-style-type: decimal;
+    text-align: left;
+    color: #F9F9F9;
+    margin-left: 2%;
+}
+
+.instructions-list > ul > li {
+    padding-top: 2%;
+}
+
+.comment {
+    padding-bottom: 2%
+}
+
+.comments > ul{
+    text-align: left;
+}
+
+/*************************************
+* Calendar
+*   Contains rules for the calendar 
+*************************************/
+.schedule {
+    background: #3C3C3C;
+}
+
+.schedule-headings {
+    font-size: x-large;
+    color: #F9F9F9;
+    height: 50px;
+}
+
+.schedule-headings > div {
+    float: left;
+    width: 14%;
+    height: 50px;
+    text-align: center;
+}
+
+.divTableCell {
+    border: 1px solid black;
+    float: left;
+    height: 100px;
+    width: 14%;
+    list-style: none;
+    text-align: left;
+    /*Add strokes for visibility*/
+    text-shadow:
+		-1px -1px 0 #000,
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+} 
+
+.pancake-cell {
+    background: transparent url(../images/pancakes.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+.meatball-cell {
+    background: transparent url(../images/meatballs.jpg) no-repeat center center;
+    background-size: contain;
+}
+
+.next-month {
+    font-style: italic;
+}

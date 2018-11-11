@@ -1,0 +1,19 @@
+{
+  "name": "seminar1",
+  "version": "1.0.0",
+  "description": "Seminar 1 for ID1354",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jkimblad/ID1354.git"
+  },
+  "author": "Jacob Kimblad",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jkimblad/ID1354/issues"
+  },
+  "homepage": "https://github.com/jkimblad/ID1354#readme"
+}
