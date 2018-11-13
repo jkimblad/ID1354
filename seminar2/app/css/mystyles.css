@@ -219,3 +219,14 @@ p {
     margin-top: 15px;
 }
 
+.login-buttons > button:active {
+    color: #F9F9F9;
+    background-color: #3700B3;
+    border: none;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    margin-top: 15px;
+}

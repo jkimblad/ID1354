@@ -22,15 +22,17 @@
 
         <div class="textbody">
             <h1>Login</h1>
-            <form>
-                <p class="button-text">First name:</p><br>
-                <input type="text" name="username"><br>
-                <p class="button-text">Password:</p><br>
-                <input type="text" name="password"><br>
-                <div class="login-buttons">
-                    <button type="button">Log in</button>
-                    <button type="button">Cancel</button>
-                </div>
+            <form id="login" action="login.php" method="post" accept-charset='UTF-8'>
+                <fieldset>
+                    <p class="button-text">First name:</p><br>
+                    <input type="text" name="username" id="username" maxlength="50"><br>
+                    <p class="button-text">Password:</p><br>
+                    <input type="text" name="password" id="password" maxlength="50"><br>
+                    <div class="login-buttons">
+                        <button type="button" formaction="../php/login.php">Log in</button>
+                        <button type="button">Cancel</button>
+                    </div>
+                </fieldset>
             </form>
         </div>
     </body>
