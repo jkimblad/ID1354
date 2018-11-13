@@ -25,6 +25,19 @@
     font-size: 25px;
 }
 
+.navbar-item-right .navbar-link {
+    /*border: 2px solid ;*/
+    border: 3px solid #6200EE;
+    border-radius: 25px;
+    display: block;
+    color: #F9F9F9;
+    text-align: center;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin-top: 3px;
+    margin-right: 10px;
+}
+
 .navbar-item .navbar-link {
     display: block;
     color: #F9F9F9;
@@ -34,6 +47,10 @@
 }
 
 .navbar-item .navbar-link:hover {
+    background-color: #3700B3;
+}
+
+.navbar-item-right .navbar-link:hover {
     background-color: #3700B3;
 }
 
@@ -176,3 +193,29 @@ p {
 .next-month {
     font-style: italic;
 }
+
+/*************************************
+* Login
+*   Contains rules for the login form 
+*************************************/
+
+.button-text {
+    margin-top: 10px;
+}
+
+.login-buttons {
+    margin-top: 10px;
+}
+
+.login-buttons > button {
+    color: #F9F9F9;
+    background-color: #6200EE;
+    border: none;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+    margin-top: 15px;
+}
+
