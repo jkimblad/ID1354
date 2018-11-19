@@ -14,11 +14,11 @@
     <!--Navigation bar-->
     <body>
         <ul class="navbar">
-            <li class="navbar-item"><a class="navbar-link" href="../index.html">Home</a></li>
-            <li class="navbar-item active"><a class="navbar-link active" href="./calendar.html">Calendar</a></li>
-            <li class="navbar-item"><a class="navbar-link" href="./meatballs-recipe.html">Meatballs Recipe</a></li>
-            <li class="navbar-item"><a class="navbar-link" href="./pancakes-recipe.html">Pancakes Recipe</a></li>
-            <li class="navbar-item-right"><a class="navbar-link" href="./login.html">Login</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../index.php">Home</a></li>
+            <li class="navbar-item active"><a class="navbar-link active" href="./calendar.php">Calendar</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./meatballs-recipe.php">Meatballs Recipe</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./pancakes-recipe.php">Pancakes Recipe</a></li>
+            <li class="navbar-item-right"><a class="navbar-link" href="./login_form.php">User</a></li>
         </ul>
 
         <div class="textbody">
@@ -37,7 +37,7 @@
                         <div>Sun</div>
                     </div>
                     <div class="divTableRow">
-                        <a href="pancakes-recipe.html">
+                        <a href="pancakes-recipe.php">
                             <div class="divTableCell pancake-cell"><p>1</p></div>
                         </a>
                         <div class="divTableCell"><p>2</p></div>
@@ -52,7 +52,7 @@
                         <div class="divTableCell"><p>9</p></div>
                         <div class="divTableCell"><p>10</p></div>
                         <div class="divTableCell"><p>11</p></div>
-                        <a href="meatballs-recipe.html">
+                        <a href="meatballs-recipe.php">
                             <div class="divTableCell meatball-cell">12</div>
                         </a>
                         <div class="divTableCell"><p>13</p></div>

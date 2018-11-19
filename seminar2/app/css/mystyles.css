@@ -95,6 +95,7 @@ h2 {
     text-align: center;
     padding-left: 25%;
     padding-right: 25%;
+    margin-bottom: 100px;
 }
 
 p {
@@ -143,6 +144,17 @@ p {
 .comments > ul{
     text-align: left;
 }
+
+
+/*************************************
+* Comment
+*   Contains rules for adding new
+*   comments to a recipe
+*************************************/
+/*.comment-button {*/
+    /*text-align: left;*/
+/*}*/
+
 
 /*************************************
 * Calendar
@@ -194,6 +206,9 @@ p {
     font-style: italic;
 }
 
+
+
+
 /*************************************
 * Login
 *   Contains rules for the login form 
@@ -207,7 +222,7 @@ p {
     margin-top: 10px;
 }
 
-.login-buttons > button {
+.button {
     color: #F9F9F9;
     background-color: #6200EE;
     border: none;
@@ -219,7 +234,7 @@ p {
     margin-top: 15px;
 }
 
-.login-buttons > button:active {
+.button:active {
     color: #F9F9F9;
     background-color: #3700B3;
     border: none;
@@ -230,3 +245,4 @@ p {
     font-size: 22px;
     margin-top: 15px;
 }
+

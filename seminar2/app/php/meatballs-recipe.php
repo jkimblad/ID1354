@@ -1,3 +1,9 @@
+<?php
+    require('submit-comment.php'); //Include login script
+    $current_page = "meatballs";
+    
+?>
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -14,11 +20,11 @@
     <!--Navigation bar-->
     <body>
         <ul class="navbar">
-            <li class="navbar-item"><a class="navbar-link" href="../index.html">Home</a></li>
-            <li class="navbar-item"><a class="navbar-link" href="./calendar.html">Calendar</a></li>
-            <li class="navbar-item active"><a class="navbar-link" href="./meatballs-recipe.html">Meatballs Recipe</a></li>
-            <li class="navbar-item"><a class="navbar-link" href="./pancakes-recipe.html">Pancakes Recipe</a></li>
-            <li class="navbar-item-right"><a class="navbar-link" href="./login.html">Login</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="../index.php">Home</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./calendar.php">Calendar</a></li>
+            <li class="navbar-item active"><a class="navbar-link" href="./meatballs-recipe.php">Meatballs Recipe</a></li>
+            <li class="navbar-item"><a class="navbar-link" href="./pancakes-recipe.php">Pancakes Recipe</a></li>
+            <li class="navbar-item-right"><a class="navbar-link" href="./login_form.php">User</a></li>
         </ul>
 
         <!--Recipe section-->
@@ -64,7 +70,12 @@
                     <li class="comment"><p>I feel as though this goes great with some mashed potatoes!</p></li>
                 </ul>
 
-
+            </div>
+            <div class="comment-submit">
+                <h2>Submit comment</h2>
+                <textarea rows="4" cols="80">
+                </textarea>
+                <input class="button comment-button" name="comment" type="submit" value="Submit comment">
             </div>
 
 
