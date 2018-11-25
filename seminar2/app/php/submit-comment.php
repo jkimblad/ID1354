@@ -4,12 +4,13 @@ require('../print.php');
 
 session_start(); //Start session
 
-$current_page = strtolower(ucwords(str_ireplace(array('','.php'),array('\'', ''),basename($_SERVER['PHP_SELF']))));
+$current_page = strtolower(ucwords(str_ireplace(array('','.php'),array('\'', ''),basename($_SERVER['HTTP_REFERER']))));
 
-console_log("firing");
+console_log("firing1");
 
 $error='';
-if (isset($_POST['comment'])) { //Check if we submited an unempty post
+if (isset($_POST['submit'])) { //Check if we submitted a comment
+    console_log("firing2");
     console_log($current_page);
     //Connect to our database (server_name, username, password)
     $mysqli = new mysqli("localhost", "root", "", "tasty_recipes");
@@ -19,7 +20,7 @@ if (isset($_POST['comment'])) { //Check if we submited an unempty post
         exit();
     }
 
-    $subject = $mysqli->real_escape_string($_POST['subject']);
+    $subject = $mysqli->real_escape_string($_POST['comment']);
     $username = $_SESSION['login_user'];
 
     console_log($username);

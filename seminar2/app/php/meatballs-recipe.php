@@ -73,9 +73,11 @@
             </div>
             <div class="comment-submit">
                 <h2>Submit comment</h2>
-                <textarea rows="4" cols="80">
-                </textarea>
-                <input class="button comment-button" name="comment" type="submit" value="Submit comment">
+                <form id="comment-submit" action="submit-comment.php" method="post" accept-charset='UTF-8'>
+                    <textarea rows="4" cols="80" name="comment">
+                    </textarea>
+                    <input class="button comment-button" name="submit-comment" type="submit" value="Submit comment">
+                </form>
             </div>
 
 

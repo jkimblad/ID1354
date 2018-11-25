@@ -32,17 +32,16 @@
         <div class="textbody">
             <h1>Login</h1>
             <form id="login" action="login.php" method="post" accept-charset='UTF-8'>
-                <fieldset>
-                    <p class="button-text">First name:</p><br>
-                    <input type="text" name="username" id="username" maxlength="50" placeholder="Username"><br>
-                    <p class="button-text">Password:</p><br>
-                    <input type="password" name="password" id="password" maxlength="50" placeholder="**********"><br>
-                    <p><?php echo $error; ?></p>
-                    <div class="login-buttons">
-                        <input class="button" name="submit" type="submit" value=" Login ">
-                        <input class="button" name="cancel" type="submit" value=" Cancel ">
-                    </div>
-                </fieldset>
+                <p class="button-text">First name:</p><br>
+                <input type="text" name="username" id="username" maxlength="50" placeholder="Username"><br>
+                <p class="button-text">Password:</p><br>
+                <input type="password" name="password" id="password" maxlength="50" placeholder="**********"><br>
+                <p><?php echo $error; ?></p>
+                <div class="login-buttons">
+                    <input class="button" name="submit" type="submit" value=" Login ">
+                    <input class="button" name="cancel" type="submit" value=" Cancel ">
+                </div>
+                    
             </form>
         </div>
     </body>
