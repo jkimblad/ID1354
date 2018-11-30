@@ -4,7 +4,9 @@
 $mysqli = new mysqli("localhost", "root", "", "tasty_recipes");
 
 //Start session
-session_start();
+if(!isset($_SESSION)){
+    session_start();
+}
 
 //Storing session
 $user_check=$_SESSION['login_user'];

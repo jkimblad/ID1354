@@ -138,22 +138,44 @@ p {
 }
 
 .comment {
-    padding-bottom: 2%
+    padding-top: 2%;
 }
 
 .comments > ul{
     text-align: left;
 }
 
+.author {
+    margin-top: 2%;
+}
+
+.delete-comment-button {
+    color: #F9F9F9;
+    background-color: #6200EE;
+    border: none;
+    padding: 5px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 22px;
+}
+
+.delete-comment-button:active {
+    background-color: #3700B3;
+}
 
 /*************************************
 * Comment
 *   Contains rules for adding new
 *   comments to a recipe
 *************************************/
-/*.comment-button {*/
-    /*text-align: left;*/
-/*}*/
+textarea {
+    resize: none;
+}
+
+.comment-submit {
+    text-align: left;
+}
 
 
 /*************************************
@@ -235,14 +257,6 @@ p {
 }
 
 .button:active {
-    color: #F9F9F9;
     background-color: #3700B3;
-    border: none;
-    padding: 5px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 22px;
-    margin-top: 15px;
 }
 

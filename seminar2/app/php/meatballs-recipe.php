@@ -1,7 +1,11 @@
 <?php
-    require('submit-comment.php'); //Include login script
-    $current_page = "meatballs";
-    
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    include('submit-comment.php'); //Include login script
+    //include('login.php'); //Include login script
+    $_SESSION['recipe_page'] = "meatballs-recipe";
+
 ?>
 
 <!DOCTYPE html>
@@ -64,20 +68,57 @@
             <div class="comments">
                 <h2>Comments</h2>
                 <ul>
-                    <li class="author"><p><b><u>Author</u>:</b> Descartes</p></li>
-                    <li class="comment"><p>A good idea would be to mix the meatballs into some type of tomato sauce.</p></li>
-                    <li class="author"><p><b><u>Author</u>:</b> Kant</p></li>
-                    <li class="comment"><p>I feel as though this goes great with some mashed potatoes!</p></li>
+                    <?php
+                        //Connect to our database (server_name, username, password)
+                        $mysqli = new mysqli("localhost", "root", "", "tasty_recipes");
+                        //check connection
+                        if ($mysqli->connect_errno) {
+                            printf("Connect failed: %s\n", $mysqli->connect_error);
+                            exit();
+                        }
+                        $result =  $mysqli->query("SELECT recipe, commenter, comment, id, active FROM Comments");
+                        //Iterate through all comments in the database
+                        while($row = $result->fetch_assoc()){
+                            //Check if comment is deleted
+                            if($row["active"] == 1){
+                                echo <<<EOF
+                                        <li class="author"><p><b><u>Author</u>:</b> {$row["commenter"]}</p></li>
+                                        <li class="comment"><p>{$row["comment"]}</p></li>
+EOF;
+                                //Check if commenter is user, which allows them to delete it
+                                if(isset($_SESSION['login_user']) && $row["commenter"] == $_SESSION['login_user']) {
+                                    echo <<<EOF
+                                            <form id="delete-comment" action="delete-comment.php?id={$row['id']}" method="post" accept-charset='UTF-8'>
+                                                <input class="delete-comment-button" name="submit" type="submit" value="Delete">
+                                            </form>
+EOF;
+                                }
+                            }
+                            
+                        }
+
+                        $mysqli->close();
+
+                    ?>
                 </ul>
 
             </div>
             <div class="comment-submit">
-                <h2>Submit comment</h2>
-                <form id="comment-submit" action="submit-comment.php" method="post" accept-charset='UTF-8'>
-                    <textarea rows="4" cols="80" name="comment">
-                    </textarea>
-                    <input class="button comment-button" name="submit-comment" type="submit" value="Submit comment">
-                </form>
+                <?php
+                    
+                    if(isset($_SESSION['login_user'])) { //Check if user is logged in
+                        //Todo:: Shrink delete comment button, make them only visible to relevant user, write sql commando in delete-comment.php
+                        echo <<<EOC
+                                <h2>Submit comment</h2>
+                                <form id="comment-submit" action="submit-comment.php" method="post" accept-charset='UTF-8'>
+                                    <textarea rows="4" cols="80" name="comment"></textarea>
+                                    <input class="button comment-button" name="submit" type="submit" value="Submit comment">
+                                </form>
+EOC;
+                        //Check if logged in user is writer of comment, allowing him/her to delete 
+                    }
+
+                ?>
             </div>
 
 

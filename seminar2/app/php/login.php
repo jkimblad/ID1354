@@ -1,7 +1,7 @@
 <?php
 session_start(); //Start session
 $error='';
-if (isset($_POST['submit'])) { //Check if we submited a post
+if (isset($_POST['submit'])) { //Check if  submit is defined in the POST
     if(empty($_POST['username'])) {
         $error = "Username is not set";
     }
