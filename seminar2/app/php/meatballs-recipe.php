@@ -76,7 +76,8 @@
                             printf("Connect failed: %s\n", $mysqli->connect_error);
                             exit();
                         }
-                        $result =  $mysqli->query("SELECT recipe, commenter, comment, id, active FROM Comments");
+                        $recipe_page = $_SESSION["recipe_page"];
+                        $result =  $mysqli->query("SELECT recipe, commenter, comment, id, active FROM Comments WHERE recipe = '$recipe_page'");
                         //Iterate through all comments in the database
                         while($row = $result->fetch_assoc()){
                             //Check if comment is deleted
@@ -107,7 +108,6 @@ EOF;
                 <?php
                     
                     if(isset($_SESSION['login_user'])) { //Check if user is logged in
-                        //Todo:: Shrink delete comment button, make them only visible to relevant user, write sql commando in delete-comment.php
                         echo <<<EOC
                                 <h2>Submit comment</h2>
                                 <form id="comment-submit" action="submit-comment.php" method="post" accept-charset='UTF-8'>
@@ -125,9 +125,6 @@ EOC;
         </div>
 
     </body>
-
-
-
 
 </html>
 
