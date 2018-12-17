@@ -1,6 +1,7 @@
 <?php
 
 class Comment_model extends CI_Model {
+
     public function __construct() {
         $this->load->database();
     }
@@ -14,6 +15,21 @@ class Comment_model extends CI_Model {
         $query = $this->db->get_where('Comments', array('slug' => $slug));
 
         return $query->row_array();
+
+    }
+
+    public function create_comment($page) {
+        $data = array(
+            'commenter' => $this->session->userdata('username'),
+            'comment' => $comment,
+            'page' => $page
+        );
+
+        return $this->db->insert('Comments', $data);
+
+    }
+
+    public function delete_comment($id) {
 
     }
 }

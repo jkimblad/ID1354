@@ -1,6 +1,6 @@
             <!--Recipe image-->
             <h1>Meatballs!</h1>
-            <img class="recipe-image" src = "../images/meatballs.jpg" alt = "Picture of meatballs"/>
+            <img class="recipe-image" src = "<?php echo base_url();?>../assets/images/meatballs.jpg" alt = "Picture of meatballs"/>
 
             <!--Recipe ingredients-->
             <div class="ingredients-list">
@@ -32,28 +32,24 @@
             <div class="comments">
                 <h2>Comments</h2>
                 <ul>
-                    <?php foreach($comments as $comment) : ?>
-                        
-
+                    <?php foreach($comments as $comment): 
+                        if($comment['recipe'] == 'meatballs-recipe') { ?>
+                            <li class="author"><p><b><u>Author</u>:</b> <?php echo $comment['commenter'];?></p></li>
+                            <li class="comment"><p><?php echo $comment['comment'];?></p></li>
+                        <?php } ?>
                     <?php endforeach; ?>
                 </ul>
 
             </div>
             <div class="comment-submit">
-                <?php
-                    
-                    if(isset($_SESSION['login_user'])) { //Check if user is logged in
-                        echo <<<EOC
-                                <h2>Submit comment</h2>
-                                <form id="comment-submit" action="submit-comment.php" method="post" accept-charset='UTF-8'>
-                                    <textarea rows="4" cols="80" name="comment"></textarea>
-                                    <input class="button comment-button" name="submit" type="submit" value="Submit comment">
-                                </form>
-EOC;
-                        //Check if logged in user is writer of comment, allowing him/her to delete 
-                    }
+                <h2>Submit comment</h2>
+                <?php echo validation_errors(); ?>
+                <?php echo form_open('comments/create'); ?>
+                    <textarea rows="4" cols="80" name="comment"></textarea>
+                    <input type="hidden" name="page" value="meatballs-recipe">
+                    <button type="submit" class="button comment-button">Submit comment</button>
+                <?php echo form_close(); ?>
 
-                ?>
             </div>
 
 
