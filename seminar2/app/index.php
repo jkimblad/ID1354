@@ -16,7 +16,7 @@
             <li class="navbar-item"><a class="navbar-link" href="./php/calendar.php">Calendar</a></li>
             <li class="navbar-item"><a class="navbar-link" href="./php/meatballs-recipe.php">Meatballs Recipe</a></li>
             <li class="navbar-item"><a class="navbar-link" href="./php/pancakes-recipe.php">Pancakes Recipe</a></li>
-                <li class="navbar-item-right"><a class="navbar-link" href="./php/login_form.php">User</a></li>
+            <li class="navbar-item-right"><a class="navbar-link" href="./php/login_form.php">User</a></li>
         </ul>
 
         <!--Welcome section-->
