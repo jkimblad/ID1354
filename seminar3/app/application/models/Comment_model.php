@@ -30,6 +30,13 @@ class Comment_model extends CI_Model {
     }
 
     public function delete_comment($id) {
+        $comment_query = $this->db->query("SELECT * FROM Comments WHERE id = '$id'");
+        if($comment_query->row(0)->commenter == $this->session->userdata('username')) {
+            $this->db->query("DELETE FROM Comments WHERE id = '$id'");
+            return true;
+        } else {
+            die('You cant delete comments written by others than yourself!');
+        }
 
     }
 }

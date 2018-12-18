@@ -11,8 +11,14 @@
             <li class="navbar-item"><a class="navbar-link" href="<?php echo base_url(); ?>meatballs-recipe">Meatballs Recipe</a></li>
             <li class="navbar-item"><a class="navbar-link" href="<?php echo base_url(); ?>pancakes-recipe">Pancakes Recipe</a></li>
 
-            <li class="navbar-item-right"><a class="navbar-link" href="<?php echo base_url(); ?>users/register">Register</a></li>
-            <li class="navbar-item-right"><a class="navbar-link" href="<?php echo base_url(); ?>users/login">Login</a></li>
+            <?php if(!$this->session->userdata('logged_in')): ?>
+                <li class="navbar-item-right"><a class="navbar-link" href="<?php echo base_url(); ?>users/register">Register</a></li>
+                <li class="navbar-item-right"><a class="navbar-link" href="<?php echo base_url(); ?>users/login">Login</a></li>
+            <?php endif; ?>
+
+            <?php if($this->session->userdata('logged_in')): ?>
+                <li class="navbar-item-right"><a class="navbar-link" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
+            <?php endif; ?>
         </ul>
 
         <div class="textbody">

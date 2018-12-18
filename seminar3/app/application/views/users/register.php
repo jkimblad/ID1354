@@ -2,19 +2,19 @@
 <?php echo validation_errors(); ?>
 
 <?php echo form_open('users/register'); ?>
-    <div class="register-form">
+    <div>
         <p>Username</p>
-        <input type="text" class="register-input" name="username" placeholder="Username">
+        <input type="text" name="username" placeholder="Username">
     </div>
-    <div class="register-form">
+    <div>
         <p>Password</p>
-        <input type="password" class="register-input" name="password" placeholder="Password">
+        <input type="password" name="password" placeholder="Password">
     </div>
     
     <button type="submit" class="button comment-button">Register</button>
 
     <?php if($this->session->flashdata('user_registered')): ?>
-        <?php echo '<p class="alert alert-success">'.$this->session->flashdata('user_registered').'</p>'; ?> 
+        <?php echo '<p>'.$this->session->flashdata('user_registered').'</p>'; ?> 
     <?php endif; ?>
 
 <?php echo form_close(); ?>

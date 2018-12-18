@@ -21,6 +21,7 @@ class Comments extends CI_Controller {
 
     public function delete($id) {
         $page = $this->input->post('page');
-        //$this->Comment
+        $this->Comment_model->delete_comment($id);
+        redirect($page);
     }
 }
