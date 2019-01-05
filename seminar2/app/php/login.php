@@ -1,5 +1,8 @@
 <?php
-session_start(); //Start session
+if(!isset($_SESSION)){
+    session_start();
+}
+
 $error='';
 if (isset($_POST['submit'])) { //Check if  submit is defined in the POST
     if(empty($_POST['username'])) {
@@ -14,7 +17,7 @@ if (isset($_POST['submit'])) { //Check if  submit is defined in the POST
         $password = $_POST['password'];
 
         //Connect to our database (server_name, username, password)
-        $mysqli = new mysqli("localhost", "root", "", "tasty_recipes");
+        $mysqli = new mysqli("localhost", "root", "", "seminar2");
         //check connection
         if ($mysqli->connect_errno) {
             printf("Connect failed: %s\n", $mysqli->connect_error);

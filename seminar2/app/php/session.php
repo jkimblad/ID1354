@@ -1,7 +1,7 @@
 <?php
 
 //Establish connection with sql server
-$mysqli = new mysqli("localhost", "root", "", "tasty_recipes");
+$mysqli = new mysqli("localhost", "root", "", "seminar2");
 
 //Start session
 if(!isset($_SESSION)){

@@ -10,7 +10,7 @@ console_log("herro");
 $error='';
 if (isset($_POST['submit'])) { //Check if we deleted something
     //Connect to our database (server_name, username, password)
-    $mysqli = new mysqli("localhost", "root", "", "tasty_recipes");
+    $mysqli = new mysqli("localhost", "root", "", "seminar2");
     //check connection
     if ($mysqli->connect_errno) {
         printf("Connect failed: %s\n", $mysqli->connect_error);

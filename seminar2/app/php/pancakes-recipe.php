@@ -3,7 +3,6 @@
         session_start();
     }
     include('submit-comment.php'); //Include login script
-    //include('login.php'); //Include login script
     $_SESSION['recipe_page'] = "pancakes-recipe";
 
 ?>
@@ -67,7 +66,7 @@
                 <ul>
                     <?php
                         //Connect to our database (server_name, username, password)
-                        $mysqli = new mysqli("localhost", "root", "", "tasty_recipes");
+                        $mysqli = new mysqli("localhost", "root", "", "seminar2");
                         //check connection
                         if ($mysqli->connect_errno) {
                             printf("Connect failed: %s\n", $mysqli->connect_error);
@@ -76,7 +75,7 @@
                         $recipe_page = $_SESSION["recipe_page"];
                         $result =  $mysqli->query("SELECT recipe, commenter, comment, id, active FROM Comments WHERE recipe = '$recipe_page'");
                         //Iterate through all comments in the database
-                        while($row = $result->fetch_assoc()){
+                        while($result && $row = $result->fetch_assoc()){
                             //Check if comment is deleted
                             if($row["active"] == 1){
                                 echo <<<EOF
