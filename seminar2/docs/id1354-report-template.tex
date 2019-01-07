@@ -8,49 +8,45 @@
 \usepackage{fancyvrb}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage{dingbat}
+
+\usepackage[autostyle]{csquotes}
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sortlocale=de_DE,
+    natbib=true,
+    url=true,
+    doi=true,
+    eprint=false
+]{biblatex}
+\addbibresource{id1354-report-template.bib}
+
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
+
 
 % Create header and footer
 \headheight 27pt
 \pagestyle{fancyplain}
 \lhead{\footnotesize{Internet Applications, ID1354}}
-\chead{\footnotesize{Name of the Report}}
+\chead{\footnotesize{Seminar 2}}
 \rhead{}
 \lfoot{}
 \cfoot{\thepage\ (\pageref{LastPage})}
 \rfoot{}
 
 % Create title page
-\title{Name of the Report}
+\title{Seminar 2}
 \subtitle{Internet Applications, ID1354}
-\author{Your Name and Email Address}
-\date{Date}
+\author{Jacob Kimblad, jacobki@kth.se}
+\date{2019-01-06}
 
 \begin{document}
 
 \maketitle
-
-\section*{Tips for Report Writing}
-\textbf{REMOVE THIS SECTION BEFORE SUBMITTING THE REPORT.}\\
-
-\noindent \textit{The target audience has exactly the same skills as the author, except they do not know anything at all about the specific program described in the report.} \\
-
-Consider the following:
-
-\begin{itemize}
-  \item \textbf{The report must be \textit{centered around the requirements}. Which are they (Introduction), how did you work to meet them (Method), what is the solution that meets them (Result), and how can you be sure they are met (Discussion). This is the IMRaD method.}
-
-  \item \textbf{The report must show that you have done the work yourself and that you have understood what you have done. Both of these goals are met by carefully explaining the source code.}
-
-  \item Is spelling and grammar correct? Is spoken language avoided?
-
-  \item Does the report have a good structure with sections, subsections and paragraphs?
-
-  \item Is the solution clearly explained? Will the reader understand the program? What would you yourself want to know if you read about the program, is that included in the report?
-
-  \item Is the solution analyzed and evaluated? Are important properties of the program explained? Should there have been more extensive evaluation?
-
-  \item Is the text clarified with images and/or other figures, and with links to the code in your Git repository? Remember that all figures (images, tables, graphs, code listings, etc) shall be numbered and have a short explaining text.
-\end{itemize}
 
 \section{Introduction}
 
@@ -69,16 +65,11 @@ The second part concerns commenting on the recipes located on the website. The c
     \item All users should be able to read all comments.
     \item Comments and their author should be stored permanently on the server.
     \item Logged in users should be able to delete their own comments, which needs to be verified server-side.
-    \item Commenting mys follow the five basic heuristics for user interface design.
+    \item Commenting must follow the five basic heuristics for user interface design.
 \end{itemize}
-
-\textbf{This section tells \textit{what} are you going to do.} \\
-
-\noindent Explain the task and the requirements on the solution. It is very important to \textit{clearly state the requirements}. If you wrote the program together with other students, list their names and email addresses here.
-
 \section{Literature Study}
 
-During the last assignment a simple http server server [XXX] was used which is quick and easy to set up but very limited. To finish this assignment a complete LAMP stack will be used running on Arch Linux. A good resource to set up the LAMP stack on Arch can be found at [XXX]. Since a database is used for the server-side storage of information of the comments, [XXX] seems like a good resource for implementation-specific information for this type of a system. It includes information about creating comments, saving them to a database and also deleting existing comments. 
+During the last assignment a simple http server server \citet{noauthor_http-server_nodate} was used which is quick and easy to set up but very limited. To finish this assignment a complete LAMP stack will be used running on Arch Linux. A good resource to set up the LAMP stack on Arch can be found at \citet{sk_install_2016}. Since a database is used for the server-side storage of information of the comments, \citet{noauthor_9_2017} seems like a good resource for implementation-specific information for this type of a system. It includes information about creating comments, saving them to a database and also deleting existing comments. 
 
 
 This section must prove that you collected sufficient knowledge before starting development, instead of just hacking away without knowing how to complete the task. State what you have read and briefly summarize what you have learned.
@@ -87,14 +78,9 @@ This section must prove that you collected sufficient knowledge before starting 
 
 The LAMP stack was installed on a Linux machine running the Arch distrobution. The web server is Apache 2.4.37 and the specific MySQL implementation is MariaDB which is made by the original developers of MySQL. The PHP version number is 7.2.12 and DBeaver is being used as a database tool for easier setup of the database.
 
-\textbf{This section tells \textit{how} you solved the task.} \\
-
-\noindent Explain how you worked when solving the tasks and how you evaluated that your solution met the requirements. Mention development tools and IDEs you used. \textit{Do not explain your solution and do not refer to code}, that belongs to the \textit{Result} section.
-
 \section{Result}
 
 The login form was put on a separate page with a link in the navbar that is visible from all other pages on the site. The login page is seen in figure \ref{fig:login_form} and the link in the navigation bar can also be seen in the upper right corner. When a user logs in a query is sent to the database to match the username and password to rows in a table called Users. If there is a match the user is logged in and the username is saved in the PHP session variable. 
-
 \begin{figure}[h!]
   \begin{center}
     \includegraphics[scale=0.3]{images/login_form.png}
@@ -102,19 +88,41 @@ The login form was put on a separate page with a link in the navbar that is visi
     \label{fig:login_form}
   \end{center}
 \end{figure}
+As the form should not call PHP functions directly, it instead directs to a PHP file where execution starts from line 1. This option can be seen in \citet{kimblad_git_2019-php_call} where the form is linked to the file login.php.
 
-\textbf{This section explains \textit{the result} of what you did.} \\
+Once the user has provided valid login information and the user has been logged in the user will be directed to a a personal user page welcoming the logged in users and also providing an option to log out. The login button in the navbar is also replaced with User button that redirects to this same page providing a log out option. This page can be seen in figure \ref{fig:user_page}. Once the user logs out they are redirected to the login page that provides a form for the username and password. 
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.3]{images/user_page.png}
+    \caption{A sample user interface screenshot to illustrate caption (this text), numbering and reference in text.}
+    \label{fig:user_page}
+  \end{center}
+\end{figure}
 
-\noindent Present the solution. Explain your code and prove that it meets the requirements. It is very important to \textit{state each requirement that is met} and explain \textit{how you met it}. It is also important to include links to your code in your Git repository, user interface screen-shots, see Figure \ref{fig:ui}, and other figures to illustrate your reasoning. Also remember that these figures must be referenced in the text.
+The ability to write comments was added to the bottom of each recipe page and contains a html textarea that is used as input for the comment and a submit button. PHP is used to check if there is a logged in user, using the session variable, and if so shows the textarea and the button. If a comment is submitted by a user the information is sent as an SQL query to the connected database such that the comment is saved server-side. The textarea and submit button can be seen in figure \ref{fig:comment_form}. 
+
+\begin{figure}[h!]
+  \begin{center}
+    \includegraphics[scale=0.3]{images/comment_form.png}
+    \caption{A sample user interface screenshot to illustrate caption (this text), numbering and reference in text.}
+    \label{fig:comment_form}
+  \end{center}
+\end{figure}
+
+Comments are listed under each recipe for all viewers of the page (including non logged in users). To have comments show up for specific recipes it is also saved in the database what page the comments were made on. This way it is made sure that comments are displayed on the relevant page. PHP is used to fetch the comments from the database and display the relevant HTML on the page. When iterating through each comment it is also checked if the creator of the comment is the same user as is logged in at the moment. If this is true, then a button to delete that specific comment is also shown on the page next below the relevant comment. The comment layout including the delete button can be seen in figure \ref{fig:comment_form}.
+The PHP code fetching information from the database and presenting the information as HTML for specifically the meatballs recipe can be found at \citet{kimblad_git_2019-comments} and similar code with appropriate changes can also be found on the page presenting the pancakes recipe.
 
 \section{Discussion}
 
-\textbf{This section \textit{analysis} the result presented in the previous section.} \\
+The requirements can be summarised by the two parts they were divided up into in the introduction. The first part covers the login and user managemnt on the website. And has been shown using screenshots a log in form is provided on the website using HTML and CSS such that it also matches the rest of the design of the website. The form also associates each user with a username and a password. A link to the public Github repository has also been provided where it shows in code that the action of the html attribute is not set to a PHP function, but instead a URL. 
 
-\noindent Summarize the requirements and \textit{clearly state which of them you have met}. What lessons have you learned and what problems did you face? How were the problems solved? Should you have done something differently?
+The five basic heuristics for interface design have also been taken into consideration during the design. Visibility of system status is provided by changing the login button in the navbar to a user button once logged in. By providing this in the navbar we also provide recognition rather than recall and an aesthetic and minimalist design. Match between systeam and the real world is considered by not using system-oriented terms, but instead terms that are intuitive to the user such as login, log out and user. 
+
+The second part of the requirements covers the comment functionality on the recipe pages. The first requirement is that logged in users should be able to leave new comments on recipes which has been made possible using a database connected to the backend. The database also holds information about which recipe the comment belongs such that every comment is only shown on the relevant page. All users, wether logged in or not, are able to read all comments but only logged in users are able to delete comments that are their own. Commenting also follows the five basic heuristics for user interface design. Visibility of system status is used by not showing any of the commenting elements when the user is not logged in, there is a match between system and the real world by using intuitive terms such ass comment, delete comment, submit comment. Recognition rather than recall is handled by also making the design aesthetic and minimalist as there is no clutter, but each part of the page clearly has a unique purpose presented to the user.
+%\nocite{*}
+\printbibliography
 
 \section{Comments About the Course}
-
-Any comment(s) related to this course offering or to coming offerings is much appreciated. \textit{Please also tell approximately how much time you spent on the assignment}, including lectures and exercises. This is of great help for course evaluation.
+Time spent on this assignment was approximately 40 hours. 
 
 \end{document}
