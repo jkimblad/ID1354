@@ -31,11 +31,11 @@
 <!--Comment section-->
 <div class="comments">
     <h2>Comments</h2>
-    <ul>
+    <ul id="comment-list">
         <?php foreach($comments as $comment): 
             if($comment['recipe'] == 'meatballs-recipe'): ?>
-                <li class="author"><p><b><u>Author</u>:</b> <?php echo $comment['commenter'];?></p></li>
-                <li class="comment"><p><?php echo $comment['comment'];?></p></li>
+                <!-- <li class="author"><p><b><u>Author</u>:</b> <?php echo $comment['commenter'];?></p></li>
+                <li class="comment"><p><?php echo $comment['comment'];?></p></li> -->
                 <?php if($this->session->userdata('username') == $comment['commenter']): ?>
                     <?php echo form_open('/comments/delete/'.$comment['id']); ?>
                         <button type="submit" value="delete" class="button comment-button">Delete comment</button>

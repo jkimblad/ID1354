@@ -24,4 +24,10 @@ class Comments extends CI_Controller {
         $this->Comment_model->delete_comment($id);
         redirect($page);
     }
+
+    public function getComments() {
+        $data["comments"] = $this->Comment_model->get_comments();
+        echo json_encode($data);
+    }
+
 }
