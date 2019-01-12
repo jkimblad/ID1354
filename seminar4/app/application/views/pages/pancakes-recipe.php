@@ -29,20 +29,8 @@
 <!--Comment section-->
 <div class="comments">
     <h2>Comments</h2>
-    <ul>
-        <?php foreach($comments as $comment): 
-            if($comment['recipe'] == 'pancakes-recipe'): ?>
-                <li class="author"><p><b><u>Author</u>:</b> <?php echo $comment['commenter'];?></p></li>
-                <li class="comment"><p><?php echo $comment['comment'];?></p></li>
-                <?php if($this->session->userdata('username') == $comment['commenter']): ?>
-                    <?php echo form_open('/comments/delete/'.$comment['id']); ?>
-                        <button type="submit" value="delete" class="button comment-button">Delete comment</button>
-                    <?php echo form_close(); ?>
-                <?php endif; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
+    <ul id="comment-list">
     </ul>
-
 </div>
 
 <!--Add new comment-->

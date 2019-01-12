@@ -4,31 +4,105 @@ $(document).ready(function() {
     //List all the comments for the recipe
     showComments();
 
+    //Activates when login button is pressed
+    $("#login-button").click(function(e) {
+        e.preventDefault();
+
+        console.log("button click");
+
+        //Send request to server
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: "http://localhost:80/seminar4/index.php/users/loginUser",
+            //data: postData,
+            data: {
+                'username' : $("#username-input").val(),
+                'password' : $("#password-input").val(),
+            },
+            dataType: 'json',
+            success: function(res) {
+                //Save username that is logged in in cookie
+                //Reload page if we could log-in
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('jqXHR:');
+                console.log(jqXHR);
+                console.log('textStatus:');
+                console.log(textStatus);
+                console.log('errorThrown:');
+                console.log(errorThrown);
+            },
+        })
+    })
+
+    //Activates when logout button is pressed
+    $("#logout-button").click(function(e) {
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: "http://localhost:80/seminar4/index.php/users/logout",
+            success: function() {
+                location.reload();
+            }
+        })
+
+    })
+
+    //Delete comment button was pressed
+    $(document).on("click", ".delete-button", function() {
+        console.log("delete button pressed!");
+        var commentId = $(this).attr('value');
+
+        $.ajax({
+            type: "GET",
+            cache: false,
+            url: "http://localhost:80/seminar4/index.php/comments/delete/" + commentId,
+            success: function() {
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('jqXHR:');
+                console.log(jqXHR);
+                console.log('textStatus:');
+                console.log(textStatus);
+                console.log('errorThrown:');
+                console.log(errorThrown);
+            },
+        })
+    })
+
+    //List all comments on relevant site
     function showComments() {
         //Get current site
         var currentPage = window.location.href.split("/").reverse()[0];
 
         console.log("firing");
 
-        jQuery.ajax({
+        $.ajax({
             type: "POST",
             cache: false,
             url: "http://localhost:80/seminar4/index.php/comments/getComments",
             data: null,
             dataType: 'json',
             success: function(res) {
-                console.log("success!");
                 if(res) {
                     comments = res.comments
+                    //Iterate all comments
                     for(i = 0; i < comments.length; i++) {
-                        if(currentPage.localeCompare(comments[i].recipe)) {
-                            console.log(comments[i])
+                        //Check comment is written on current page
+                        if(!currentPage.localeCompare(comments[i].recipe)) {
+                            //Append author and commend to comment-list
                             $('#comment-list').append(
                                 '<li class="author"><p><b><u>Author</u>:</b>' + comments[i].commenter + '</p></li>' +
                                 '<li class="comment"><p>' + comments[i].comment + '</p></li>'
                             );
                             //TODO
                             //If the logged in user has written the comment, add a delete button
+                            if(res.logged_in && (res.username == comments[i].commenter)) {
+                                $('#comment-list').append( '<button class="delete-button button comment-button" type="submit" value="' + comments[i].id  + '" >Delete comment</button>' );
+                            }
                         }
                     }
 
@@ -45,27 +119,4 @@ $(document).ready(function() {
         })
     }
 
-
-    //function listComments() {
-    //$.ajax({
-    //type: 'ajax',
-    //url: base_url + "/comments/showcomments",
-    //async: false,
-    //dataType: 'json',
-    //success: function(data) {
-    //var output = '';
-    //var deleteComment = '';
-    //var i;
-    //for (i = 0; i < data.length; i++) {
-    //if($('#username').text() == data[i].username) {
-    //deleteComment = '<a href="javascript:;" class="deletebutton" data="'+data[i].id'+">Delete comment</a>'
-    //} else {
-    //deleteComment = '';
-    //}
-    //data[i].username;
-    //}
-    //}
-    //})
-
-    //}
 })

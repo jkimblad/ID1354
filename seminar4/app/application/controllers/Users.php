@@ -25,48 +25,84 @@ class Users extends CI_Controller {
         }
     }
 
+    //public function login() {
+        //$data['title'] = 'Sign in';
+
+        //$this->load->view('templates/header');
+        //$this->load->view('users/login', $data);
+        //$this->load->view('templates/footer');
+
+        //////login user
+        ////$user_exists = $this->User_model->login($username, $password);
+
+        ////if($user_exists) {
+            //////login is valid
+            //////create session
+            ////$user_data = array(
+                ////'username' => $username,
+                ////'logged_in' => true
+            ////);
+
+            ////$this->session->set_userdata($user_data);
+            //////$this->session->set_flashdata('user_loggedin', 'You are now logged in!');
+
+            //////redirect('users/login');
+
+            //////TODO Make to JSON first
+            ////echo $user_data;
+        ////} else {
+            //////User didnt exist
+            //////$this->session->set_flashdata('login_fail', 'Username and password combination doesnt exist!');
+
+            //////redirect('users/login');
+        ////}
+
+
+
+    //}
+
     public function login() {
         $data['title'] = 'Sign in';
 
-        $this->form_validation->set_rules('username', 'Username', 'required');
-        $this->form_validation->set_rules('password', 'Password', 'required');
+        $this->load->view('templates/header');
+        $this->load->view('users/login', $data);
+        $this->load->view('templates/footer');
+    }
 
-        if($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header');
-            $this->load->view('users/login', $data);
-            $this->load->view('templates/footer');
+    //public function loginUser() {
+        //$newdata = array(
+            //'logged_in' => TRUE
+        //);
+        //$this->session->set_userdata($newdata);
+        //echo json_encode(TRUE);
+    //}
+
+    public function loginUser() {
+
+        //Save received data
+        $username = $this->input->post('username');
+        $password = md5($this->input->post('password'));
+
+        $user_exists = $this->User_model->login($username, $password);
+
+        if($user_exists) {
+            //login is valid
+            //create session
+            $user_data = array(
+                'logged_in' => TRUE,
+                'username' => $username,
+            );
+            $this->session->set_userdata($user_data);
+
+            echo json_encode($user_data);
 
         } else {
-
-            //get username
-            $username = $this->input->post('username');
-            //encrypt password
-            $password = md5($this->input->post('password'));
-            
-            //login user
-            $user_exists = $this->User_model->login($username, $password);
-
-            if($user_exists) {
-                //login is valid
-                //create session
-                $user_data = array(
-                    'username' => $username,
-                    'logged_in' => true
-                );
-
-                $this->session->set_userdata($user_data);
-                $this->session->set_flashdata('user_loggedin', 'You are now logged in!');
-
-                redirect('users/login');
-            } else {
-                //User didnt exist
-                $this->session->set_flashdata('login_fail', 'Username and password combination doesnt exist!');
-
-                redirect('users/login');
-            }
-
-
-
+            $user_data = array(
+                'username' => null,
+                'logged_in' => FALSE
+            );
+            //$this->session->set_userdata($user_data);
+            echo json_encode($user_data);
         }
     }
 

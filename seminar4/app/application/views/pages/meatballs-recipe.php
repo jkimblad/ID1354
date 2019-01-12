@@ -32,20 +32,9 @@
 <div class="comments">
     <h2>Comments</h2>
     <ul id="comment-list">
-        <?php foreach($comments as $comment): 
-            if($comment['recipe'] == 'meatballs-recipe'): ?>
-                <!-- <li class="author"><p><b><u>Author</u>:</b> <?php echo $comment['commenter'];?></p></li>
-                <li class="comment"><p><?php echo $comment['comment'];?></p></li> -->
-                <?php if($this->session->userdata('username') == $comment['commenter']): ?>
-                    <?php echo form_open('/comments/delete/'.$comment['id']); ?>
-                        <button type="submit" value="delete" class="button comment-button">Delete comment</button>
-                    <?php echo form_close(); ?>
-                <?php endif; ?>
-            <?php endif; ?>
-        <?php endforeach; ?>
     </ul>
-
 </div>
+
 <?php if($this->session->userdata('logged_in')): ?>
     <div class="comment-submit">
         <h2>Submit comment</h2>

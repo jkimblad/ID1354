@@ -1,13 +1,3 @@
-<script type="text/javascript">
-    var base_url = "<?php echo base_url(); ?>";
-    function site_url(url){
-        var bu = "<?php echo base_url(); ?>";
-        url = (url)?url:"";
-        return bu + "index.php/" + url;
-    }
-</script>
-
-
 <html>
     <head>
         <title>Tasty recipes</title>
@@ -30,7 +20,7 @@
             <?php endif; ?>
 
             <?php if($this->session->userdata('logged_in')): ?>
-                <li class="navbar-item-right"><a class="navbar-link" href="<?php echo base_url(); ?>users/logout">Logout</a></li>
+                <li class="navbar-item-right"><button id="logout-button" class="navbar-link" type="submit">Logout</button></li>
             <?php endif; ?>
         </ul>
 
