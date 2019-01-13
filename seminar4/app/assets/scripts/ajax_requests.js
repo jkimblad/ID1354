@@ -4,6 +4,38 @@ $(document).ready(function() {
     //List all the comments for the recipe
     showComments();
 
+    //Send a new comment written by the user to the backend
+    $("#comment-submit-button").click(function(e) {
+        var tempdata = {
+                'comment' :  $("#comment-text").val(),
+                'page' : window.location.href.split("/").reverse()[0],
+        }
+        console.log(tempdata);
+
+        $.ajax({
+            type: "POST",
+            cache: false,
+            url: "http://localhost:80/seminar4/index.php/comments/create",
+            data: {
+                'comment' :  $("#comment-text").val(),
+                'page' : window.location.href.split("/").reverse()[0],
+            },
+            dataType: 'json',
+            success: function() {
+                location.reload();
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log('jqXHR:');
+                console.log(jqXHR);
+                console.log('textStatus:');
+                console.log(textStatus);
+                console.log('errorThrown:');
+                console.log(errorThrown);
+            },
+        })
+
+    })
+
     //Activates when login button is pressed
     $("#login-button").click(function(e) {
         e.preventDefault();

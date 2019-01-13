@@ -12,11 +12,11 @@ class Comment_model extends CI_Model {
 
     }
 
-    public function create_comment() {
+    public function create_comment($comment, $page, $username) {
         $data = array(
-            'commenter' => $this->session->userdata('username'),
-            'comment' => $this->input->post('comment'),
-            'recipe' => $this->input->post('page')
+            'commenter' => $username,
+            'comment' => $comment,
+            'recipe' => $page 
         );
 
         return $this->db->insert('Comments', $data);

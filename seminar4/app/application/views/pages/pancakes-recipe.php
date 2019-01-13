@@ -37,12 +37,8 @@
 <?php if($this->session->userdata('logged_in')): ?>
     <div class="comment-submit">
         <h2>Submit comment</h2>
-        <?php echo validation_errors(); ?>
-        <?php echo form_open('comments/create'); ?>
-            <textarea rows="4" cols="80" name="comment"></textarea>
-            <input type="hidden" name="page" value="pancakes-recipe">
-            <button type="submit" class="button comment-button">Submit comment</button>
-        <?php echo form_close(); ?>
+            <textarea id="comment-text" rows="4" cols="80" name="comment"></textarea>
+            <button id="comment-submit-button" type="submit" class="button comment-button">Submit comment</button>
     </div>
 <?php endif; ?>
 

@@ -3,20 +3,14 @@
 class Comments extends CI_Controller {
 
     public function create() {
-        //$data['comments'] = $this->Comment_model->get_comments();
+        $comment = $this->input->post('comment');
         $page = $this->input->post('page');
+        $username = $this->session->userdata('username');
 
-        $this->form_validation->set_rules('comment', 'Comment', 'required');
+        $this->Comment_model->create_comment($comment, $page, $username);
 
-        if($this->form_validation->run() === FALSE) {
-            $this->load->view('templates/header');
-            $this->load->view('pages/'.$page, $data);
-            $this->load->view('templates/footer');
-        } else {
-            $this->Comment_model->create_comment();
-            $this->session->set_flashdata('comment_posted', 'Your comment has been posted!');
-            redirect($page);
-        }
+        $success = true;
+        echo json_encode($success);
     }
 
     public function delete($id) {
