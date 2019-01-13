@@ -8,6 +8,24 @@
 \usepackage{fancyvrb}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage{dingbat}
+
+\usepackage[autostyle]{csquotes}
+\usepackage[
+    backend=biber,
+    style=ieee,
+    sortlocale=de_DE,
+    natbib=true,
+    url=true,
+    doi=true,
+    eprint=false
+]{biblatex}
+\addbibresource{id1354-report-template.bib}
+
+\usepackage[]{hyperref}
+\hypersetup{
+    colorlinks=true,
+}
 
 % Create header and footer
 \headheight 27pt
@@ -20,76 +38,56 @@
 \rfoot{}
 
 % Create title page
-\title{Name of the Report}
+\title{Seminar 4}
 \subtitle{Internet Applications, ID1354}
-\author{Your Name and Email Address}
-\date{Date}
+\author{Jacob Kimblad, jacobki@kth.se}
+\date{1019-01-13}
 
 \begin{document}
 
 \maketitle
-
-\section*{Tips for Report Writing}
-\textbf{REMOVE THIS SECTION BEFORE SUBMITTING THE REPORT.}\\
-
-\noindent \textit{The target audience has exactly the same skills as the author, except they do not know anything at all about the specific program described in the report.} \\
-
-Consider the following:
-
-\begin{itemize}
-  \item \textbf{The report must be \textit{centered around the requirements}. Which are they (Introduction), how did you work to meet them (Method), what is the solution that meets them (Result), and how can you be sure they are met (Discussion). This is the IMRaD method.}
-
-  \item \textbf{The report must show that you have done the work yourself and that you have understood what you have done. Both of these goals are met by carefully explaining the source code.}
-
-  \item Is spelling and grammar correct? Is spoken language avoided?
-
-  \item Does the report have a good structure with sections, subsections and paragraphs?
-
-  \item Is the solution clearly explained? Will the reader understand the program? What would you yourself want to know if you read about the program, is that included in the report?
-
-  \item Is the solution analyzed and evaluated? Are important properties of the program explained? Should there have been more extensive evaluation?
-
-  \item Is the text clarified with images and/or other figures, and with links to the code in your Git repository? Remember that all figures (images, tables, graphs, code listings, etc) shall be numbered and have a short explaining text.
-\end{itemize}
-
 \section{Introduction}
 
-\textbf{This section tells \textit{what} are you going to do.} \\
+The final seminar gives an introduction to client-side scripting using Javascript. It aims to make the author more familiar with interacting with the Document Object Model (DOM) through the use of the Javascript library JQuery and AJAX. The idea is to sen requests through Javascript to update information on the server and on the client such as ther user session and recipe comments. The requirements for the assignment are summarised in the list below.
 
-\noindent Explain the task and the requirements on the solution. It is very important to \textit{clearly state the requirements}. If you wrote the program together with other students, list their names and email addresses here.
+\begin{itemize}
+    \item AJAX is used for login and logout.
+    \item AJAX is used for reading, writing and deleting comments.
+    \item No HTML code, but only data, is sent as a response to an AJAX request.
+    \item Recipe comments are stored on the client side (for example in the DOM).
+\end{itemize}
 
 \section{Literature Study}
 
-This section must prove that you collected sufficient knowledge before starting development, instead of just hacking away without knowing how to complete the task. State what you have read and briefly summarize what you have learned.
+Since this is the first encounter with javascript in the course the Mozilla JavaScript reference \citet{noauthor_javascript_nodate} is a good resource to have at hand. 
+Since the jQuery library will be used its API is also necessary to keep at hand. The jQuery documentation is very extensive and well written and can be found at \citet{js.foundation_jquery_nodate}. 
+The jQuery documentation also includes the documentation for AJAX, which specifically can be found at \citet{js.foundation_ajax_nodate}.
 
 \section{Method}
-
-\textbf{This section tells \textit{how} you solved the task.} \\
-
-\noindent Explain how you worked when solving the tasks and how you evaluated that your solution met the requirements. Mention development tools and IDEs you used. \textit{Do not explain your solution and do not refer to code}, that belongs to the \textit{Result} section.
+No new tools were needed during this seminar other than the javascript library jQuery which is fetched on the client side from googles Content Delivery Network (CDN). Other than that Codeigniter is still used for the backend and the LAMP stack consists of Arch Linux, Apache, MariaDB and PHP. The texteditor used is Vim and DBeaver is used for database management. Firefox will be used as the browser during development and Chromium will also be used during testing to check for cross-browser compability.
 
 \section{Result}
+All of the JavaScript was written into a single file that is served to the user along each page loaded by the user visiting the website. The Javascript file is located under the assets folder and can be directly found at \citet{kimblad_git_2019_file}. The file consists of five event handlers and one function. The first event handler \citet{kimblad_git_2019_1} is tied to the page viewed by the user and its callback-function is called once the DOM is ready to be used through executing JavaScript code. All of the four other event handlers are located within the callback of this event handler as they are tied to elements on the page. The single function \citet{kimblad_git_2019_77} is also located within the event handler for the document and is used to display the comments on each of the recipe pages. The function is also called \citet{kimblad_git_2019_5} within the event handler for the document, so once the DOM is ready to be interacted with it is made sure that all of the comments are loaded onto the page through the DOM. 
 
-\textbf{This section explains \textit{the result} of what you did.} \\
+To show the comments an AJAX request is first made to the server to receive all the comments in the database as well as the username of the currently logged in user. Each comment on the page consists of two list item HTML elements, one showing the author of the comment and one showing the acutal comment. To add these elements we append them \citet{kimblad_git_2019_97} through jQuery to an existing div with an assigned id, this is done for each comment and they are in such a way saved in the DOM. When adding a comment to the DOM there is also a check if the author of the comment is the same as the logged in user (passed through the response to the AJAX request) and if so is the case a delete button is added underneath that specific comment using the DOM.
 
-\noindent Present the solution. Explain your code and prove that it meets the requirements. It is very important to \textit{state each requirement that is met} and explain \textit{how you met it}. It is also important to include links to your code in your Git repository, user interface screen-shots, see Figure \ref{fig:ui}, and other figures to illustrate your reasoning. Also remember that these figures must be referenced in the text.
+Each delete button is also tied to an event handler \citet{kimblad_git_2019_54} that sends a GET request using AJAX once pressed. The GET request calls the delete function in the comments controller on the server with one argument passed in the URL. The argument is the id of the comment tied to its row in the database such that the model can know which row to delete. The server also makes sure that the comment actually belongs to the currently logged in user. 
+Since the delete buttons are loaded after the rest of the page through an AJAX call their event handler cant be attached as soon as the DOM is ready as they wont exist yet. This is the reason for using the function .on() instead of .click() to attach an event handler to these buttons.
+After the call is completed the current page is reloaded using the location.reload() function in JavaScript.
 
-\begin{figure}[h!]
-  \begin{center}
-    \includegraphics[scale=0.3]{ui.jpg}
-    \caption{A sample user interface screenshot to illustrate caption (this text), numbering and reference in text.}
-    \label{fig:ui}
-  \end{center}
-\end{figure}
+The logout button in the navbar is also attached to an event handler \citet{kimblad_git_2019_54} that makes a call to the logout function in the users controller using AJAX. Since all of the logic for the logout is dealt with on the server this function doesnt need to send or receive any further data, but simply call the provided URL using AJAX. After the call is succeded the location.reload() function is called in JavaScript to reload the page.
+
+A third event handler \citet{kimblad_git_2019_40} is attached to the login button located on the login page. This event handler submits a POST request to the function loginUser located in the users controller once the login button is pressed. It makes sure to load the information that has been inputed by the user in the username and password input boxes and send to the server. Once the request is succesfull the page is reloaded using JavaScript. Which page is served to the user during the reload is then decided by the server depending on if the login was succesfull or not.  
+
+The final event handler \citet{kimblad_git_2019_8} is connected to the submit comment button. An AJAX request is then made to the function create in the comments controller on the server providing the comment inputted by the user in the textarea and what recipe page the comment was made on. Once the AJAX request has been made succesfully the page is reloaded using JavaScript to show the new comment.
 
 \section{Discussion}
+The requirements were to use JavaScript and AJAX to handle login and logout of the user as well as reading, writing and deleting comments. An additional requirement was that no HTML code, but only data was to be sent as a response to an AJAX request and the recipes comments should be stored on the client side. The results show how two event handlers tied to the login and logout buttons are used to make calls to functions in a controller on the server side to login and logout the user. Two additional handlers were used to add and delete comments by making calls to different functions in a different controller on the server. An additional AJAX call is also made each time the DOM of the page has been loaded to fetch all existing comments in the database from the server such that they can be added to the DOM using JavaScript and shown to the user and are in this way stored on the client side. As the comments from the database are sent to the client in the AJAX response using JSON representation no HTML is sent as a response to the AJAX. Thus all of the requirements have been reached.
 
-\textbf{This section \textit{analysis} the result presented in the previous section.} \\
-
-\noindent Summarize the requirements and \textit{clearly state which of them you have met}. What lessons have you learned and what problems did you face? How were the problems solved? Should you have done something differently?
 
 \section{Comments About the Course}
+The author spent around 20 hours on this seminar.
 
-Any comment(s) related to this course offering or to coming offerings is much appreciated. \textit{Please also tell approximately how much time you spent on the assignment}, including lectures and exercises. This is of great help for course evaluation.
+\printbibliography
 
 \end{document}
